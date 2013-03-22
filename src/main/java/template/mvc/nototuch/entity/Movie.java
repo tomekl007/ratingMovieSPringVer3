@@ -20,6 +20,9 @@ import javax.persistence.Table;
 import static javax.persistence.CascadeType.ALL;
 import javax.persistence.*;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 
 /**
  *
@@ -46,6 +49,7 @@ public class Movie implements java.io.Serializable {
   //    , inverseJoinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "ID")
  //     )
     @ManyToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
     private Collection<User> users;
    // private int rate;
    @OneToMany(cascade = ALL, mappedBy = "movie", fetch = FetchType.EAGER )

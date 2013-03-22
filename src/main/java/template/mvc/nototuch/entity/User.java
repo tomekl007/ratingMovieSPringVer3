@@ -17,6 +17,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 /**
  *
  * @author Tomek
@@ -30,6 +33,7 @@ import javax.persistence.Table;
 public class User implements java.io.Serializable{
    
     @ManyToMany(mappedBy = "users")
+    @LazyCollection(LazyCollectionOption.FALSE)
     private Collection<Movie> movies;
     private String name;
     private String password;

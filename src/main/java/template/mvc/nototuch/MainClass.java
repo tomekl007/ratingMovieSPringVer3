@@ -43,11 +43,11 @@ public class MainClass {
 		Movie m = requestBean.findMovieById(3);
 		System.out.println(m + "  " + m.getRates());
 		
-		User u=requestBean.findUserById(1);
-		System.out.println("User  " + u + " watched: "  + u.getMovies() );
+	
 		
 		//List<Movie> moviesForUser = (List<Movie>) requestBean.findMoviesForSpecyficUser(1);
 		//System.out.println("-->>> "+ moviesForUser);
+		
 		
 		
 		Integer movieId = 3;
@@ -72,6 +72,15 @@ public class MainClass {
 		 MyLoginBean myLoginBean= ctx.getBean("myLoginBean", MyLoginBean.class);
 		 
 		 System.out.println(myLoginBean.getName());
+		 
+		 
+
+			
+			Movie movie = requestBean.findMovieById(3);
+			System.out.println("movie :" + movie + " was watched by : " + movie.getUsers());
+			
+			User u=requestBean.findUserById(1);
+			System.out.println("User  " + u + " watched: "  + u.getMovies() );
 	
 		
 	}
