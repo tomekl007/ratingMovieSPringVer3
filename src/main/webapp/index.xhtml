@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <body>
+        <ui:composition template="/index-template.xhtml">
+            <ui:define name="title">All Movies</ui:define>
+            <ui:define name="body">
+
+            </ui:define>
+
+            <ui:define name="moviesTable">
+
+                <h:dataTable
+                    id="tabelka"
+                    class="tab"
+                    var="movie"
+                    summary="Table of movies"
+                    value="#{ratingManager.movies}"
+                    rules="all"
+                    cellpadding="5">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Movie ID" />
+                        </f:facet>
+                         <h:outputText value="#{movie.id}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Title"/>
+                        </f:facet> 
+                        <h:outputText value="#{movie.title}" />
+                    </h:column>
+                     <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Avarege" />
+                        </f:facet> 
+                         <h:outputText value="#{ratingManager.computeAvarageRateForSpecyficMovie(movie)}">
+                         <f:convertNumber pattern="##.##" />
+                         </h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Actions" />
+                        </f:facet>
+                        <h:form>
+                            <h:commandLink id="movie_id_link" action="rateMovie"><!--ide do rateMovie.xhtml-->
+                                <h:outputText value="Rate this movie"/>
+                                <!-- po kliknieciu w Rate this movie, wartosc movie.id, jest zapisywana do ratingManager.currentRatingMovie-->
+                                <f:setPropertyActionListener target="#{ratingManager.currentRatingMovie}" value="#{movie.id}" />
+                            </h:commandLink>
+                        </h:form>
+                    </h:column>
+                   
+                </h:dataTable>
+            </ui:define>
+            
+             <ui:define name="logoutForm">
+             <h:form>
+            <h:commandLink id="logout_link" action="login"><!--ide do login.xhtml-->
+                                <h:outputText value="logout" />
+             </h:commandLink>
+              </h:form>
+             </ui:define>
+            
+            
+             <ui:define name="myAccount">
+             <h:form>
+            <h:commandLink id="myAccount_link" action="myAccount"><!--ide do myAccount.xhtml-->
+                                <h:outputText value="myaccount" />
+             </h:commandLink>
+              </h:form>
+             </ui:define>
+            
+            
+        </ui:composition>
+    </body>
+</html>
+

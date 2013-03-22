@@ -1,0 +1,60 @@
+/* 
+    Document   : myCss
+    Created on : Sep 17, 2012, 7:07:34 AM
+    Author     : Tomek
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+body {
+    background-color: #ffffff;
+    font-size: 12px;
+    font-family: Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    color: #000000;  
+    margin: 10px;
+    /*i will use el in css*/
+    background-image: url('#{facesContext.externalContext.requestContextPath}/resources/images/batman_rise.jpg');
+}
+
+h1 {
+    font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    border-bottom: 1px solid #AFAFAF; 
+    font-size:  16px;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+    color: #D20005;
+}
+
+a:link, a:visited {
+  color: #045491;
+  font-weight : bold;
+  text-decoration: none;
+}
+
+a:link:hover, a:visited:hover  {
+  color: #045491;
+  font-weight : bold;
+  text-decoration : underline;
+}
+
+th {
+    font-weight: bold;
+    text-align: center;
+}
+
+td {
+    text-align: center;
+}
+
+
+tr:hover{
+   /* background: #fff url(#{resource['img:batman_rise.jpg']}) repeat-x 50% -26px;*/
+    background:#b01111;
+    color:#fff; 
+    cursor:pointer
+    
+}
+
+
+   

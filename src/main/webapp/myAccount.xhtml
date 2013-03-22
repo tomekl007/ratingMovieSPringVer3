@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <body>
+        <ui:composition template="/myAccount-template.xhtml">
+            <ui:define name="title">All Movies rated by Me</ui:define>
+            <ui:define name="body">
+
+            </ui:define>
+            
+             <ui:define name="moviesRated">
+             <h:dataTable
+                    var="movies"
+                    summary="Table of my movies"
+                    value="#{ratingManager.moviesForCurrentUserId}"
+                    rules="all"
+                    cellpadding="5">
+                 <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Title" />
+                        </f:facet> 
+                     <h:outputText value="#{movies.title}" />
+                    </h:column>
+                 <h:column>
+                     <f:facet name="Name">
+                            <h:outputText value="My rate for this movie" />
+                        </f:facet> 
+                     <h:outputText value="#{ratingManager.findRateForUserMovieId(movies)}" />
+                 </h:column>
+                
+                 
+                </h:dataTable>
+            </ui:define>
+            
+            <ui:define name ="getBack">
+                <h:form>
+            <h:commandLink id="index_back_link" action="index"><!--ide do index.xhtml-->
+                                <h:outputText value="Get back to list of Movies" />
+                                <!-- po kliknieciu w Rate this movie, wartosc movie.id, jest zapisywana do ratingManager.currentRatingMovie-->
+             </h:commandLink>
+               </h:form>
+            </ui:define>
+            
+            
+        </ui:composition>
+    </body>
+</html>
+

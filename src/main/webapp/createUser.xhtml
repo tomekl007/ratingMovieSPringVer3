@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <body>
+        <ui:composition template="/createUser-template.xhtml">
+            <ui:define name="title">All Movies</ui:define>
+            <ui:define name="body">
+
+            </ui:define>
+            <ui:define name="create">
+               <h:form> 
+                   <h:outputLabel for="inputName"
+                           value="type you're name : "/> 
+                   <h:inputText id="inputName"
+                                value ="#{ratingManager.newUserName}"
+                                required ="true"/>
+               
+                   <h:outputLabel for="inputPassword"
+                           value="type you're password: "/> 
+                   <h:inputSecret id="inputPassword"
+                                  value ="#{ratingManager.newUserPassword}"
+                                  required ="true"/>
+                   <h:commandButton value="confirm" action="#{ratingManager.preConfirm()}" />
+               </h:form>
+                <h:form rendered="#{ratingManager.preConfirmAddUser}"> 
+                    <h:outputLabel for="addUserButton"
+                                   value="userName : #{ratingManager.newUserName} password : #{ratingManager.newUserPassword} "
+                                   /> 
+                  <h:commandButton id="addUserButton"
+                                   value="Everythiong is correct" action="#{ratingManager.createNewUser()}"/>
+                </h:form>
+                
+                
+
+            </ui:define>
+            <ui:define name="getBack">
+                 <h:form>
+            <h:commandLink id="index_back_link" action="index"><!--ide do index.xhtml-->
+                                <h:outputText value="Get back to list of Movies" />
+                                <!-- po kliknieciu w Rate this movie, wartosc movie.id, jest zapisywana do ratingManager.currentRatingMovie-->
+             </h:commandLink>
+               </h:form>
+                
+            </ui:define>
+
+          
+            
+            
+        </ui:composition>
+    </body>
+</html>
+

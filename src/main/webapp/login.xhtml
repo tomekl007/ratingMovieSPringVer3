@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:ez="http://java.sun.com/jsf/composite/ezcomp">
+<!--The using page in this example application, web/index.xhtml, is an XHTML file that invokes
+the login composite component file along with the managed bean. It validates the user's input.-->
+    <h:head>
+        <title>My Login Page</title>  
+    </h:head>
+    <h:body>
+        <h2>Login Component</h2>
+
+        <!-- press CTRL-SHIFT-p for page debugging information -->
+        <ui:debug hotkey="p" rendered="true"/>
+
+        <h:form>
+
+            <div id="compositeComponent">
+                <ez:LoginPanel myLoginBean="#{myLoginBean}" 
+                               loginAction="#{myLoginBean.login}"
+                               resetAction="#{myLoginBean.reset}">
+                     <f:validateLength maximum="10" minimum="4" for="vals" />
+                </ez:LoginPanel>
+            </div>
+
+        </h:form>
+        
+                <h:form>
+            <h:commandLink id="create_new_User" 
+                           action="createUser"
+                           rendered="#{myLoginBean.renderCreateUser}"><!--ide do createUser.xhtml-->
+                                <h:outputText value="createUser" />
+             </h:commandLink>
+               </h:form>
+
+    </h:body>
+</html>
+

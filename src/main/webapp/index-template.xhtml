@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <head>
+        <title>All Movies</title>
+        <link href="./css/myCss.css" rel="stylesheet" type="text/css" />
+        <h:outputScript library="js" name="tableHoover.js"/>
+    </head>
+    <body>
+        <h1><ui:insert name="title">Default Title</ui:insert></h1>
+
+        <ui:insert name="body">Default Body</ui:insert>
+
+        <h2>View All Movies</h2>
+        <ui:insert name="moviesTable">Default moviesTable</ui:insert>
+
+     
+        <ui:insert name="logoutForm">logout</ui:insert>
+        
+        <ui:insert name="myAccount">go to my account </ui:insert>
+
+         <!-- <h2>Find Vendors</h2>
+        <ui:insert name="findVendorForm">Default find vendors form</ui:insert>
+
+        <ui:insert name="findVendorTable">Default find vendor table</ui:insert>-->
+    </body>
+</html>
+

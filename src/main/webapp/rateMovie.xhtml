@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <body>
+        <ui:composition template="/rateMovie-template.xhtml">
+<!--The form tag represents an input form component, which allows the user to input some data and submit 
+it to the server, usually by clicking a button. All UI component tags that represent editable 
+components (such as text fields and menus) must be nested inside the form tag. 
+In the case of the greeting.jsp page, some of the tags contained in the form are outputText,
+inputText, commandButton, and message. You can specify an ID for the form tag. 
+This ID maps to the associated form UI component on the server.-->
+            <ui:define name="title">Rate movie</ui:define>
+            
+            <ui:define name="body">
+                
+               <h:outputText value="Hello! #{ratingManager.nameOfLoginUser}" />
+           
+            
+            <h:form>
+       
+                <h:graphicImage url="#{ratingManager.findCurrentMovieUrl()}"
+                            alt="Poster of this movie"
+                            width="200" height="400"/>
+            
+            <h:outputLabel for="rateMenu"
+                           value="You`re rate for #{ratingManager.nameOfCurrenMovie}"/> 
+            <h:selectOneMenu id="rateMenu" required="true" value="#{ratingManager.currentMovieRate}">
+                        <f:selectItem itemValue="1" itemLabel="1" />
+                        <f:selectItem itemValue="2" itemLabel="2" />
+                        <f:selectItem itemValue="3" itemLabel="3" />
+                        <f:selectItem itemValue="4" itemLabel="4" />
+                        <f:selectItem itemValue="5" itemLabel="5" />
+                        <f:selectItem itemValue="6" itemLabel="6" />
+                        <f:selectItem itemValue="7" itemLabel="7" />
+                        <f:selectItem itemValue="8" itemLabel="8" />
+                        <f:selectItem itemValue="9" itemLabel="9" />
+                        <f:selectItem itemValue="10" itemLabel="10"/>
+                    </h:selectOneMenu>            
+           
+            <h:commandButton value="Submit" action="#{ratingManager.submitRate()}" />
+           <!--     <f:setPropertyActionListener target="#{ratingManager.currentRatingMovie}" value="#{movie.id}" />
+            </h:commandButton>-->
+            </h:form>
+            </ui:define>
+            
+          <ui:define name="ratingForThisMovie">
+               <h:dataTable
+                    var="rates"
+                    summary="Table of rates"
+                    value="#{ratingManager.ratesForCurrentMovieId}"
+                    rules="all"
+                    cellpadding="5">
+                 <h:column>
+                        <f:facet name="Name">
+                            <h:outputText value="Name" />
+                        </f:facet> 
+                      <h:outputText value="#{ratingManager.findUserNameById(rates.idOfRatingUser)}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Rate" />
+                        </f:facet> 
+                        <h:outputText value="#{rates.rate}" />
+                    </h:column>
+                 
+                </h:dataTable>
+          <!--      teraz metoda getUsers. from Movie
+              <h:dataTable
+                    var="users"
+                    summary="Table of rates"
+                    value="#{ratingManager.usersForCurrentMovie}"
+                    rules="all"
+                    cellpadding="5">
+                 <h:column>
+                        <f:facet name="Name">
+                            <h:outputText value="Name" />
+                        </f:facet> 
+                     <h:outputText value="#{users.name}" />
+                    </h:column>
+                
+                 
+                </h:dataTable>-->
+              
+          </ui:define>
+            
+            
+             
+            <ui:define name ="getBack">
+                <h:form>
+            <h:commandLink id="index_back_link" action="index"><!--ide do index.xhtml-->
+                                <h:outputText value="Get back to list of Movies" />
+                                <!-- po kliknieciu w Rate this movie, wartosc movie.id, jest zapisywana do ratingManager.currentRatingMovie-->
+             </h:commandLink>
+               </h:form>
+                
+                  <h:form>
+            <h:commandLink id="logout_link" action="login"><!--ide do login.xhtml-->
+                                <h:outputText value="logout" />
+             </h:commandLink>
+               </h:form>
+            </ui:define>
+            
+
+        </ui:composition>
+        
+    </body>
+</html>
+
