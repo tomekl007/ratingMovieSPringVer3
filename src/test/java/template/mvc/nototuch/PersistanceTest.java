@@ -50,28 +50,12 @@ public class PersistanceTest {
         assertEquals(title , m2.getTitle());
 	}
 
-	@Test
-	@Transactional(isolation=Isolation.READ_UNCOMMITTED)
-	public void testCreateUser() {
-		String name = "nameUniqueToTest";
-		requestBean.createUser(name, "surname");
-		List<User> users = requestBean.getAllUsers();
-		
-		Integer count=0;
-		for(User user : users){
-			if(name.equals(user.getName()))
-				count++;
-		}
-		
-		assertNotSame(new Integer(0), count);
-			
-		
-	}
+
 	
 	@Test
 	@Transactional
 	public void getAllMovies(){
-		requestBean.createMovie("some movie" ,99, "www.batman.com");
+		//requestBean.createMovie("some movie" ,99, "www.batman.com");
 		List<Movie> movies  = requestBean.getAllMovies();
 		
 		
