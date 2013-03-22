@@ -29,7 +29,7 @@ public class PersistanceTest {
 	@Before
     public void initObjects() {
 		GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-		ctx.load("app-context.xml");
+		ctx.load("root-context.xml");
 		ctx.refresh();
 		requestBean = ctx.getBean("requestBean", RequestBean.class);
 		System.out.println("--> requestBean : " + requestBean);

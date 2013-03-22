@@ -21,8 +21,8 @@ public class ConfigBean {
 		this.request = request;
 	}
 
-
-/*@PostConstruct
+/*
+@PostConstruct
     public void createData() {
        request.createMovie("Batman", 4,"resources/images/batman_rise.jpg");
        request.createMovie("Piraci z Karaibów", 5, "resources/images/piractes_of_carraiben.jpg");
