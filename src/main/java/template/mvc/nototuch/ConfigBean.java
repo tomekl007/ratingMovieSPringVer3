@@ -21,7 +21,7 @@ public class ConfigBean {
 		this.request = request;
 	}
 
-/*
+
 @PostConstruct
     public void createData() {
        request.createMovie("Batman", 4,"resources/images/batman_rise.jpg");
@@ -32,5 +32,5 @@ public class ConfigBean {
        request.createUser("Miecio",  "1234");
      
          
-   }*/
+   }
 }

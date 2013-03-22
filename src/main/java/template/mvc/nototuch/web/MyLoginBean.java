@@ -106,6 +106,7 @@ public class MyLoginBean {
                  FacesContext.getCurrentInstance()
                         .addMessage(null, facesMsg);
                  this.loginUser = user;
+                 System.out.println("SET login USER : " + user);
               //   rm.setCurrentUser(user);
                  
                  return "index";

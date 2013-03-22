@@ -48,8 +48,8 @@ public class Movie implements java.io.Serializable {
     @ManyToMany
     private Collection<User> users;
    // private int rate;
-   @OneToMany(cascade = ALL, mappedBy = "movie" )
-   @ElementCollection(fetch=FetchType.EAGER)
+   @OneToMany(cascade = ALL, mappedBy = "movie", fetch = FetchType.EAGER )
+  // @ElementCollection(fetch=FetchType.EAGER)
    private Collection<Rate> rates;
     
     public Movie(){

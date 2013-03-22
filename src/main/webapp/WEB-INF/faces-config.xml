@@ -9,9 +9,36 @@
      <!-- <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>-->  
     
     
+    
+    
 
   
   </application>
   
+  
+     <managed-bean>
+  <managed-bean-name>myLoginBean</managed-bean-name>
+  <managed-bean-class>template.mvc.nototuch.web.MyLoginBean</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ <!--<managed-property
+    <property-name>userManager</property-name>
+    <value>#{userManager}</value>
+   </managed-property>-->
+  </managed-bean>
+
+<managed-bean>
+  <managed-bean-name>RatingManager</managed-bean-name>
+  <managed-bean-class>template.mvc.nototuch.web.RatingManager</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+    <property-name>mlb</property-name>
+    <value>#{myLoginBean}</value>
+   </managed-property>
+  </managed-bean>
+  <!-- <managed-property>
+    <property-name>userManager</property-name>
+    <value>#{userManager}</value>-->
+<!--   </managed-property>
+</managed-bean>-->
        
   </faces-config>

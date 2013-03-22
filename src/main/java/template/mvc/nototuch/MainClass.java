@@ -41,10 +41,10 @@ public class MainClass {
 		System.out.println(users);
 		
 		Movie m = requestBean.findMovieById(3);
-	//	System.out.println(m + "  " + m.getRates());
+		System.out.println(m + "  " + m.getRates());
 		
 		User u=requestBean.findUserById(1);
-		//System.out.println("User  " + u + " watched: "  + u.getMovies() );
+		System.out.println("User  " + u + " watched: "  + u.getMovies() );
 		
 		//List<Movie> moviesForUser = (List<Movie>) requestBean.findMoviesForSpecyficUser(1);
 		//System.out.println("-->>> "+ moviesForUser);

@@ -17,6 +17,9 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIParameter;
 import javax.faces.event.ActionEvent;
 
+import org.hibernate.Hibernate;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import template.mvc.nototuch.RequestBean;
 import template.mvc.nototuch.entity.*;
 
@@ -38,7 +41,8 @@ public class RatingManager {
     
     
     //i injected MyLoginBean, to rating manager
-     @ManagedProperty(value="#{myLoginBean}")
+    @Autowired
+    // @ManagedProperty(value="#{myLoginBean}")
      private MyLoginBean mlb;
      
   //  private List<Rate> ratesForCurrentMovie;
@@ -106,6 +110,9 @@ public class RatingManager {
     }
     
     public String getNameOfLoginUser(){
+    	
+    	System.out.println("-----> in get neame of login USer = " + 
+    	(mlb.getLoginUser().getName())==null?"null":mlb.getName());
          this.nameOfLoginUser = mlb.getLoginUser().getName();
          logger.info(nameOfLoginUser.isEmpty() ? (" nameOfLoginUser is empty" ): nameOfLoginUser);
         return nameOfLoginUser;
@@ -113,7 +120,9 @@ public class RatingManager {
     
     
      public List<Movie> getMovies() {
-        movies = request.getAllMovies();
+    System.out.println(mlb.getName());
+  //  Hibernate.initialize();
+    movies = request.getAllMovies();
         return movies;
      }
      
@@ -330,6 +339,7 @@ public class RatingManager {
     }
     
     public List<Movie> getMoviesForCurrentUserId(){
+    	System.out.println(mlb == null ? "null" : "-------->mlb get Login user ");
         return (List<Movie>) request.findUserById(this.mlb.getLoginUser().getId()).getMovies();
     }
     
